@@ -22,7 +22,9 @@ import androidx.compose.ui.unit.sp
 
 data class Song(
     val title: String,
-    val artist: String
+    val artist: String,
+    val album: String,
+    val genre: String
 )
 
 @Composable

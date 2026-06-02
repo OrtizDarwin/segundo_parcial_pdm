@@ -43,18 +43,58 @@ fun SearchScreen(
     }
 
     val songs = listOf(
-        Song("Blinding Lights", "The Weeknd"),
-        Song("Starboy", "The Weeknd"),
-        Song("505", "Arctic Monkeys"),
-        Song("Sweater Weather", "The Neighbourhood"),
-        Song("After Dark", "Mr.Kitty"),
-        Song("Requiem", "Keshi")
-    )
 
+        Song(
+            "Blinding Lights",
+            "The Weeknd",
+            "After Hours",
+            "Synthwave"
+        ),
+
+        Song(
+            "Starboy",
+            "The Weeknd",
+            "Starboy",
+            "R&B"
+        ),
+
+        Song(
+            "505",
+            "Arctic Monkeys",
+            "Favourite Worst Nightmare",
+            "Indie Rock"
+        ),
+
+        Song(
+            "Sweater Weather",
+            "The Neighbourhood",
+            "I Love You",
+            "Alternative"
+        ),
+
+        Song(
+            "After Dark",
+            "Mr.Kitty",
+            "Time",
+            "Synthwave"
+        ),
+
+        Song(
+            "Requiem",
+            "Keshi",
+            "Gabriel",
+            "Lo-fi"
+        )
+    )
     val filteredSongs = songs.filter {
 
         it.title.contains(searchQuery, true) ||
-                it.artist.contains(searchQuery, true)
+
+                it.artist.contains(searchQuery, true) ||
+
+                it.album.contains(searchQuery, true) ||
+
+                it.genre.contains(searchQuery, true)
     }
 
     Scaffold(

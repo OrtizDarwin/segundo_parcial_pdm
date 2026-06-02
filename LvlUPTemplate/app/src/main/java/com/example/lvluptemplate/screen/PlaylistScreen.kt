@@ -26,6 +26,8 @@ import com.example.lvluptemplate.components.CreatePlaylistDialog
 import com.example.lvluptemplate.components.MiniPlayerComponent
 import com.example.lvluptemplate.components.PlaylistCardComponent
 import com.example.lvluptemplate.components.SimpleBottomBar
+import androidx.compose.runtime.saveable.rememberSaveable
+import com.example.lvluptemplate.resources.DummyPlaylistData
 
 data class Playlist(
     val id: Int,
@@ -42,14 +44,10 @@ fun PlaylistsScreen(
         mutableStateOf(false)
     }
 
-    var playlists by remember {
+
+    var playlists by rememberSaveable {
         mutableStateOf(
-            listOf(
-                Playlist(1, "Daily Drive", 45),
-                Playlist(2, "Cyberpunk Beats", 28),
-                Playlist(3, "Chill Gaming", 60),
-                Playlist(4, "Elektro Sessions", 19)
-            )
+            DummyPlaylistData.playlists
         )
     }
 
@@ -110,7 +108,8 @@ fun PlaylistsScreen(
                                     0
                                 )
 
-                                playlists = playlists + newPlaylist
+                                playlists.add(newPlaylist)
+                                playlists = playlists.toMutableList()
 
                                 showDialog = false
                             }
