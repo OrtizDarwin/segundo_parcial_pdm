@@ -27,11 +27,17 @@ import androidx.compose.ui.unit.sp
 import com.example.lvluptemplate.screen.Playlist
 
 @Composable
-fun PlaylistCardComponent(playlist: Playlist) {
+fun PlaylistCardComponent(
+    playlist: Playlist,
+    onClick: () -> Unit
+) {
+
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable {  }
+            .clickable {
+                onClick()
+            }
     ) {
 
         Box(
@@ -40,8 +46,10 @@ fun PlaylistCardComponent(playlist: Playlist) {
                 .aspectRatio(1f)
                 .clip(RoundedCornerShape(16.dp))
                 .background(Color(0xFF151515)),
+
             contentAlignment = Alignment.Center
         ) {
+
             Icon(
                 imageVector = Icons.Default.Place,
                 contentDescription = null,
@@ -60,6 +68,7 @@ fun PlaylistCardComponent(playlist: Playlist) {
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
+
         Text(
             text = "${playlist.tracksCount} tracks",
             color = Color.Gray,
